@@ -262,9 +262,33 @@ export default MyComponent;
 
 # Redux and react-redux
 
-## Redux
+## **Redux** - [Redux Docs/API](https://redux.js.org/api/api-reference)
 
-## react-redux
+Redux is a predictable state container for JavaScript apps. Written by _Dan Abramov_ who also created `create-react-app`, `react-hot-loader`, and `react-dnd`.
+
+
+Redux was inspired by Flux and Elm.
+
+Facebook was facing problems with the MVC structure. The Model and View relationships can get tricky. This is especially true as your application starts to scale. You could be dealing with problems such as infinite loops.
+
+That’s when Facebook introduced Flux. A uni-directional way of updating Views and handling user actions.
+You can learn more about Flux and some of the challenges Facebook faced in this video.
+
+Redux uses this concept of uni-directional data flow. (Redux is a modified implementation of the Flux architecture)
+
+- The application has a central / root state.
+- A state change triggers View updates.
+- Only special functions can change the state.
+- A user interaction triggers these special, state changing functions.
+- Only one change takes place at a time.
+
+This means that the central state cannot trigger any further actions. Only a user input can trigger another action. This makes state much more manageable. It also makes it difficult to introduce infinite loops.
+
+## **react-redux** - [React-Redux Docs](https://react-redux.js.org/)
+
+While Redux is framework agnostic. React-Redux are the official React bindings for Redux. It also works with React-Native `0.18+` if using React-Redux `5.x+`
+
+
 
 # Deep understanding of react-thunk and react-saga
 
@@ -308,4 +332,21 @@ export default MyComponent;
 
 ## How do I create a CSS variable and then reference it in other parts of a stylesheet?
 
+Setting a CSS variable
+
+```css
+element {
+  --main-bg-color: brown;
+}
+```
+
+Using a CSS variable
+```css
+element {
+  background-color: var(--main-bg-color);
+}
+```
+
 ## What is the single core difference between Flexbox and CSS Grids?
+
+CSS Grid is a `layout-first` approach while Flexbox is a `content-first` approach.
