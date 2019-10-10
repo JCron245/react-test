@@ -86,6 +86,61 @@ function Example() {
 
 You can also use a return statement within useEffect to have functionality fire off on unmount.
 
+
+### **Custom Hooks**
+
+You can write custom hooks to share stateful logic between components.
+This is custom logic to tell whether a friend is online or offline. The custom hook is using both useState and useEffect and takes a friendID to tell whether 
+they are online or not. 
+
+```javascript 
+import React, { useState, useEffect } from 'react';
+
+function useFriendStatus(friendID) {
+  const [isOnline, setIsOnline] = useState(null);
+
+  function handleStatusChange(status) {
+    setIsOnline(status.isOnline);
+  }
+
+  useEffect(() => {
+    ChatAPI.subscribeToFriendStatus(friendID, handleStatusChange);
+    return () => {
+      ChatAPI.unsubscribeFromFriendStatus(friendID, handleStatusChange);
+    };
+  });
+
+  return isOnline;
+}
+```
+
+now we can use the custom hook in different components.
+
+```javascript
+ function FriendStatus(props) {
+  const isOnline = useFriendStatus(props.friend.id);
+
+  if (isOnline === null) {
+    return 'Loading...';
+  }
+  return isOnline ? 'Online' : 'Offline';
+}
+
+function FriendListItem(props) {
+  const isOnline = useFriendStatus(props.friend.id);
+
+  return (
+    <li style={{ color: isOnline ? 'green' : 'black' }}>
+      {props.friend.name}
+    </li>
+  );
+}
+```
+
+*Custom hooks are more of a convention than feature. If a functions name starts with "use" and it calls other hooks React determines this is a custom hook.
+(useFriendStatus is calling useState and useEffects)
+The "useSomething" naming convention is how the hook linter plugin catchs bugs in the code using hooks. 
+
 # **React with both Class Components and Function Components with Hooks**
 
 ## **Class Components**
