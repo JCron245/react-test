@@ -86,7 +86,6 @@ function Example() {
 
 You can also use a return statement within useEffect to have functionality fire off on unmount.
 
-
 ### **Custom Hooks**
 
 You can write custom hooks to share stateful logic between components.
@@ -140,6 +139,10 @@ function FriendListItem(props) {
 *Custom hooks are more of a convention than feature. If a functions name starts with "use" and it calls other hooks React determines this is a custom hook.
 (useFriendStatus is calling useState and useEffects)
 The "useSomething" naming convention is how the hook linter plugin catchs bugs in the code using hooks. 
+
+### **React Portal**
+
+### **Code Splitting / Lazy Loading**
 
 # **React with both Class Components and Function Components with Hooks**
 
