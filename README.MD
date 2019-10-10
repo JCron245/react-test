@@ -40,7 +40,7 @@
     - [Webpack](#webpack)
     - [NPM](#npm)
     - [Yarn](#yarn)
-- [Docker](#docker)
+- [Docker](#A-solid-understanding-of-Docker-and-how-to-deploy-your-app-to-a-Docker-Registry-and-maintain-a-deployment-script)
 - [CSS](#css)
     - [How do I create a CSS variable and then reference it in other parts of a stylesheet?](#How-do-I-create-a-CSS-variable-and-then-reference-it-in-other-parts-of-a-stylesheet?)
     - [What is the single core difference between Flexbox and CSS Grids?](#What-is-the-single-core-difference-between-Flexbox-and-CSS-Grids?)
@@ -607,6 +607,20 @@ axios.post('/user', {
 ## yarn
 
 # A solid understanding of Docker and how to deploy your app to a Docker Registry and maintain a deployment script
+
+Docker uses containerization which is similar to virtualization (like a vm). The difference is you do not need to complete environment to run like the OS.  
+Containers include the application and all of its dependencies --but share the kernel with other containers, running as isolated processes in user space on 
+the host operating system. Docker containers are not tied to any specific infrastructure: they run on any computer, on any infrastructure, and in any cloud.
+
+## deploy your app to a Docker Registry
+  * Before you can deploy a registry, you need to install Docker on the host. A registry is an instance of the registry image, and runs within Docker.
+  * Use a command like `docker run -d -p 5000` to start the registry container
+  * Copy an image from Docker Hub to your registry
+  * `docker pull ubuntu`
+  * `docker tag ubuntu`
+  * `docker push localhost:5000/my-ubuntu`
+
+You can also deploy to Kubernetes
 
 # CSS
 
