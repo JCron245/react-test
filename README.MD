@@ -3,7 +3,7 @@
 ## **Table Of Contents:**
 - [React](#REACT)
     - [Virtual Dom](#virtual-dom)
-    - [JSX](jsx)
+    - [JSX](#jsx)
     - [React Hooks](#react-hooks)
         - [State Hook](#state-hook)
         - [Effect Hook](#effect-hook)
@@ -18,7 +18,7 @@
 - [Create React App](#)
 - [React Scripts w/ SASS and other compilation tools](#)
 - [React Native](#)
-- [React Router](#)
+- [React Router](#react-router)
 - [Redux and React-Redux](#)
     - [Redux](#)
     - [React-Redux](#)
@@ -307,12 +307,12 @@ export default MyComponent;
 
 # React Native
 
-# React Router – _and some proficiency with an animation library like react-router-transition_
+# React Router – and some proficiency with an animation library like react-router-transition
 
 Standard routing library for React.
-  - Supports both web and React Navitve
-    - react-router-dom
-    - react-router-native
+- Supports both web and React Native
+  - react-router-dom
+  - react-router-native
 
 Basic Routing example 
 
@@ -373,28 +373,28 @@ function Users() {
   return <h2>Users</h2>;
 }
 ```
-- Route element
-  - Routes have 3 props that can be used to define what should be rendered when a route's path matches. Only one should be proveded to the element.
-    - component - a React component
-    ```javascript
-        <Route path='page' component={page} />
-    ```
-    - render - a function that returns a React element, useful fo inline rendering and passing extra props.
+- Route element 
+  -  Routes have 3 props that can be used to define what should be rendered when a route's path matches. Only one should be proveded to the element.
+    -  component - a React component
+    -  render - a function that returns a React element, useful fo inline rendering and passing extra props.
+    - children - a function that returns a React like element. unlike the first 2 props this will always be rendered, whether or not the route's path matches.
+    ```javascript
+      <Route path="/page" component={Page}/>
+    ```
     ```javascript
         <Route path='/page' render={(props) => (
           <Page {...props} data={extraProps}/>
         )}/>
     ```
-    - children - a function that returns a React like element. unlike the first 2 props this will always be rendered, whether or not the route's path matches.
     ```javascript
         <Route path='/page' children={(props) => (
         props.match
           ? <Page {...props}/>
           : <EmptyPage {...props}/>
-        )}/>
-    ```
-    - Switch element
-      - looks through all of the child routes and renders the first one that matches the current url
+        )}/>  
+  ```
+- Switch Element
+  - looks through all of the child routes and renders the first one that matches the current url
       ```javascript
       function Main() {
         return (
@@ -407,9 +407,9 @@ function Users() {
           </main>
         );
       }
-   ```
-  - Link element
-    - element changes the url and renders the correct component without re-loading the page. think routerLink :)
+  ```
+  - Link element
+    - element changes the url and renders the correct component without re-loading the page. think routerLink :)
     ```javascript
       function Header() {
         return (
@@ -425,8 +425,6 @@ function Users() {
         );
       }
     ```
-
-
 # Redux and react-redux
 
 ## **Redux** - [Redux Docs/API](https://redux.js.org/api/api-reference)
