@@ -1,6 +1,52 @@
 # BlndSpt Test
 
-# **React** - [reactjs.org](http://reactjs.org)
+## **Table Of Contents:**
+- [React](#REACT)
+    - [Virtual Dom](#virtual-dom)
+    - [JSX](jsx)
+    - [React Hooks](#react-hooks)
+        - [State Hook](#state-hook)
+        - [Effect Hook](#effect-hook)
+        - [Custom Hooks](#custom-hooks)
+        - [React Portal](#react-portal)
+        - [Code Splitting / Lazy Loading](#code-splitting-/-lazy-loading)
+- [React w/ both Class Components and Function Components with Hooks](#React-with-both-Class-Components-and-Function-Components-with-Hooks)
+    - [Class Components](#class-components)
+        - [ES6 Class Component](#ES6-Class-Component-Declaration)
+        - [Create Class Component](#Create-Class-Component-Declaration)
+    - [Function Components w/ Hooks](#)
+- [Create React App](#)
+- [React Scripts w/ SASS and other compilation tools](#)
+- [React Native](#)
+- [React Router](#)
+- [Redux and React-Redux](#)
+    - [Redux](#)
+    - [React-Redux](#)
+- [React-Thunk and React-Saga](#)
+    - [React-Thunk](#)
+    - [React-Saga](#)
+- [Fetch and Axios](#)
+    - [Fetch](#)
+    - [Axios](#)
+- [React Performance Best Practices](#)
+- [ES2019](#ES2019)
+    - [Whats New](#)
+    - [Generators](#)
+- [Bootstrap and React-Boostrap](#)
+    - [Bootstrap](#)
+    - [React-Bootstrap](#)
+- [JEST](#)
+- [Webpack, NPM, and Yarn](#)
+    - [Webpack](#webpack)
+    - [NPM](#npm)
+    - [Yarn](#yarn)
+- [Docker](#docker)
+- [CSS](#css)
+    - [How do I create a CSS variable and then reference it in other parts of a stylesheet?](#How-do-I-create-a-CSS-variable-and-then-reference-it-in-other-parts-of-a-stylesheet?)
+    - [What is the single core difference between Flexbox and CSS Grids?](#What-is-the-single-core-difference-between-Flexbox-and-CSS-Grids?)
+
+# **React**
+[reactjs.org](http://reactjs.org)
 
 A JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies.
 
@@ -262,122 +308,124 @@ export default MyComponent;
 # React Native
 
 # React Router – _and some proficiency with an animation library like react-router-transition_
-Standard routing library for React.
-  - Supports both web and React Navitve
-    - react-router-dom
-    - react-router-native
 
-Basic Routing example 
+Standard routing library for React.
+  - Supports both web and React Navitve
+    - react-router-dom
+    - react-router-native
+
+Basic Routing example 
 
 ```javascript
-  import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+  import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-export default function App() {
-  return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
+export default function App() {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
+          </ul>
+        </nav>
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/users">
+            <Users />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 
-function Home() {
-  return <h2>Home</h2>;
+function Home() {
+  return <h2>Home</h2>;
 }
 
-function About() {
-  return <h2>About</h2>;
+function About() {
+  return <h2>About</h2>;
 }
 
-function Users() {
-  return <h2>Users</h2>;
+function Users() {
+  return <h2>Users</h2>;
 }
 ```
-- Route element
-  - Routes have 3 props that can be used to define what should be rendered when a route's path matches. Only one should be proveded to the element.
-    - component - a React component
-    ```javascript
-        <Route path='page' component={page} />
-    ```
-    - render - a function that returns a React element, useful fo inline rendering and passing extra props.
-    ```javascript
-        <Route path='/page' render={(props) => (
-          <Page {...props} data={extraProps}/>
-        )}/>
-    ```
-    - children - a function that returns a React like element. unlike the first 2 props this will always be rendered, whether or not the route's path matches.
-    ```javascript
-        <Route path='/page' children={(props) => (
-        props.match
-          ? <Page {...props}/>
-          : <EmptyPage {...props}/>
-        )}/>
-    ```
-    - Switch element
-      - looks through all of the child routes and renders the first one that matches the current url
-      ```javascript
-      function Main() {
-        return (
-          <main>
-            <Switch>
-              <Route exact path='/' component={Home}/>
-              <Route path='/roster' component={Roster}/>
-              <Route path='/schedule' component={Schedule}/>
-            </Switch>
-          </main>
-        );
-      }
-    ```
-  - Link element
-    - element changes the url and renders the correct component without re-loading the page. think routerLink :)
-    ```javascript
-      function Header() {
-        return (
-          <header>
-            <nav>
-              <ul>
-                <li><Link to='/'>Home</Link></li>
-                <li><Link to='/roster'>Roster</Link></li>
-                <li><Link to='/schedule'>Schedule</Link></li>
-              </ul>
-            </nav>
-          </header>
-        );
-      }
-    ```
+- Route element
+  - Routes have 3 props that can be used to define what should be rendered when a route's path matches. Only one should be proveded to the element.
+    - component - a React component
+    ```javascript
+        <Route path='page' component={page} />
+    ```
+    - render - a function that returns a React element, useful fo inline rendering and passing extra props.
+    ```javascript
+        <Route path='/page' render={(props) => (
+          <Page {...props} data={extraProps}/>
+        )}/>
+    ```
+    - children - a function that returns a React like element. unlike the first 2 props this will always be rendered, whether or not the route's path matches.
+    ```javascript
+        <Route path='/page' children={(props) => (
+        props.match
+          ? <Page {...props}/>
+          : <EmptyPage {...props}/>
+        )}/>
+    ```
+    - Switch element
+      - looks through all of the child routes and renders the first one that matches the current url
+      ```javascript
+      function Main() {
+        return (
+          <main>
+            <Switch>
+              <Route exact path='/' component={Home}/>
+              <Route path='/roster' component={Roster}/>
+              <Route path='/schedule' component={Schedule}/>
+            </Switch>
+          </main>
+        );
+      }
+   ```
+  - Link element
+    - element changes the url and renders the correct component without re-loading the page. think routerLink :)
+    ```javascript
+      function Header() {
+        return (
+          <header>
+            <nav>
+              <ul>
+                <li><Link to='/'>Home</Link></li>
+                <li><Link to='/roster'>Roster</Link></li>
+                <li><Link to='/schedule'>Schedule</Link></li>
+              </ul>
+            </nav>
+          </header>
+        );
+      }
+    ```
+
 
 # Redux and react-redux
 
@@ -536,9 +584,9 @@ axios.post('/user', {
 - [github](https://github.com/axios/axios)
 # React performance best practices
 
-# Very deep understanding of all things ES2019 – ask yourself if you know what a Generator is
+# ES2019
 
-## new in ES2019
+## What's new in ES2019
 
 ## What's a generator?
 
