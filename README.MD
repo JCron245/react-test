@@ -260,6 +260,123 @@ export default MyComponent;
 
 # React Router – _and some proficiency with an animation library like react-router-transition_
 
+Standard routing library for React.
+  - Supports both web and React Navitve
+    - react-router-dom
+    - react-router-native
+
+Basic Routing example 
+
+```javascript
+  import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+export default function App() {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/users">
+            <Users />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+function Home() {
+  return <h2>Home</h2>;
+}
+
+function About() {
+  return <h2>About</h2>;
+}
+
+function Users() {
+  return <h2>Users</h2>;
+}
+```
+- Route element
+  - Routes have 3 props that can be used to define what should be rendered when a route's path matches. Only one should be proveded to the element.
+    - component - a React component
+    ```javascript
+        <Route path='page' component={page} />
+    ```
+    - render - a function that returns a React element, useful fo inline rendering and passing extra props.
+    ```javascript
+        <Route path='/page' render={(props) => (
+          <Page {...props} data={extraProps}/>
+        )}/>
+    ```
+    - children - a function that returns a React like element. unlike the first 2 props this will always be rendered, whether or not the route's path matches.
+    ```javascript
+        <Route path='/page' children={(props) => (
+        props.match
+          ? <Page {...props}/>
+          : <EmptyPage {...props}/>
+        )}/>
+    ```
+    - Switch element
+      - looks through all of the child routes and renders the first one that matches the current url
+      ```javascript
+      function Main() {
+        return (
+          <main>
+            <Switch>
+              <Route exact path='/' component={Home}/>
+              <Route path='/roster' component={Roster}/>
+              <Route path='/schedule' component={Schedule}/>
+            </Switch>
+          </main>
+        );
+      }
+    ```
+  - Link element
+    - element changes the url and renders the correct component without re-loading the page. think routerLink :)
+    ```javascript
+      function Header() {
+        return (
+          <header>
+            <nav>
+              <ul>
+                <li><Link to='/'>Home</Link></li>
+                <li><Link to='/roster'>Roster</Link></li>
+                <li><Link to='/schedule'>Schedule</Link></li>
+              </ul>
+            </nav>
+          </header>
+        );
+      }
+    ```
+
 # Redux and react-redux
 
 ## **Redux** - [Redux Docs/API](https://redux.js.org/api/api-reference)
