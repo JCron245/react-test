@@ -86,6 +86,10 @@ function Example() {
 
 You can also use a return statement within useEffect to have functionality fire off on unmount.
 
+### **React Portal**
+
+### **Code Splitting / Lazy Loading**
+
 # **React with both Class Components and Function Components with Hooks**
 
 ## **Class Components**
