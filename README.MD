@@ -299,9 +299,122 @@ While Redux is framework agnostic. React-Redux are the official React bindings f
 # Proficiency with Axios and Fetch
 
 ## fetch
+The fetch API is a JavaScript interface for accessing and manipulating parts of the HTTP pipline such as requests and responses.
 
+  - fetch interfaces
+    - Global fetch() 
+      - method to gather resources async across the network.
+      - returns a promise that resolves to response of the request (successful or not)
+    - Headers
+      - response/request headers
+    - Request
+      - resource request
+    - Resopnse 
+      - response to a request
+  - fetch mixins
+    - Body
+      - represents the body of the request/response 
+      - provides methods to decleare which content type and how to handle req/res
+        - ex. res.json()
+
+Basic fetch example
+```javascript
+  const response = await fetch('http://example.com/movies.json');
+  const myJson = await response.json();
+  console.log(JSON.stringify(myJson));
+```
+
+Example POST method
+```javascript
+  try {
+  const data = await postData('http://example.com/answer', { answer: 42 });
+  console.log(JSON.stringify(data)); // JSON-string from `response.json()` call
+} catch (error) {
+  console.error(error);
+}
+
+async function postData(url = '', data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrer: 'no-referrer', // no-referrer, *client
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  return await response.json(); // parses JSON response into native JavaScript objects
+}
+```
 ## axios
+Promise based HTTP client for the browser and node.js
+  - axios is heavily inspired by the $http service provided in AngularJS.
 
+GET request example
+```javascript
+  const axios = require('axios');
+
+// Make a request for a user with a given ID
+axios.get('/user?ID=12345')
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed
+  });
+
+// Optionally the request above could also be done as
+axios.get('/user', {
+    params: {
+      ID: 12345
+    }
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed
+  });  
+
+// Want to use async/await? Add the `async` keyword to your outer function/method.
+async function getUser() {
+  try {
+    const response = await axios.get('/user?ID=12345');
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
+```
+POST reqeust example
+
+```javascript
+axios.post('/user', {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+```
+
+- [github](https://github.com/axios/axios)
 # React performance best practices
 
 # Very deep understanding of all things ES2019 – ask yourself if you know what a Generator is
