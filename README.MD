@@ -1,6 +1,52 @@
 # BlndSpt Test
 
-# **React** - [reactjs.org](http://reactjs.org)
+## **Table Of Contents:**
+- [React](#REACT)
+    - [Virtual Dom](#virtual-dom)
+    - [JSX](jsx)
+    - [React Hooks](#react-hooks)
+        - [State Hook](#state-hook)
+        - [Effect Hook](#effect-hook)
+        - [Custom Hooks](#custom-hooks)
+        - [React Portal](#react-portal)
+        - [Code Splitting / Lazy Loading](#code-splitting-/-lazy-loading)
+- [React w/ both Class Components and Function Components with Hooks](#React-with-both-Class-Components-and-Function-Components-with-Hooks)
+    - [Class Components](#class-components)
+        - [ES6 Class Component](#ES6-Class-Component-Declaration)
+        - [Create Class Component](#Create-Class-Component-Declaration)
+    - [Function Components w/ Hooks](#)
+- [Create React App](#)
+- [React Scripts w/ SASS and other compilation tools](#)
+- [React Native](#)
+- [React Router](#)
+- [Redux and React-Redux](#)
+    - [Redux](#)
+    - [React-Redux](#)
+- [React-Thunk and React-Saga](#)
+    - [React-Thunk](#)
+    - [React-Saga](#)
+- [Fetch and Axios](#)
+    - [Fetch](#)
+    - [Axios](#)
+- [React Performance Best Practices](#)
+- [ES2019](#ES2019)
+    - [Whats New](#)
+    - [Generators](#)
+- [Bootstrap and React-Boostrap](#)
+    - [Bootstrap](#)
+    - [React-Bootstrap](#)
+- [JEST](#)
+- [Webpack, NPM, and Yarn](#)
+    - [Webpack](#webpack)
+    - [NPM](#npm)
+    - [Yarn](#yarn)
+- [Docker](#docker)
+- [CSS](#css)
+    - [How do I create a CSS variable and then reference it in other parts of a stylesheet?](#How-do-I-create-a-CSS-variable-and-then-reference-it-in-other-parts-of-a-stylesheet?)
+    - [What is the single core difference between Flexbox and CSS Grids?](#What-is-the-single-core-difference-between-Flexbox-and-CSS-Grids?)
+
+# **React**
+[reactjs.org](http://reactjs.org)
 
 A JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies.
 
@@ -420,9 +466,9 @@ axios.post('/user', {
 - [github](https://github.com/axios/axios)
 # React performance best practices
 
-# Very deep understanding of all things ES2019 – ask yourself if you know what a Generator is
+# ES2019
 
-## new in ES2019
+## What's new in ES2019
 
 ## What's a generator?
 
