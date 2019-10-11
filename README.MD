@@ -363,47 +363,47 @@ function Users() {
 - Route element
   - Routes have 3 props that can be used to define what should be rendered when a route's path matches. Only one should be proveded to the element.
   - component - a React component
-    ```javascript 
-    <Route path='page' component={page} /> 
+    ```javascript
+    <Route path='page' component={page} />
     ```
     - render - a function that returns a React element, useful fo inline rendering and passing extra props.
-    ```javascript 
+    ```javascript
     <Route path='/page' render={(props) => ( <Page {...props} data={extraProps}/> )}/>
     ```
   - children - a function that returns a React like element. unlike the first 2 props this will always be rendered, whether or not the route's path matches.
-  ```javascript 
+  ```javascript
     <Route path='/page' children={(props) => ( props.match ? <Page {...props}/> : <EmptyPage {...props}/> )}/>
   ```
 - Switch element
   - looks through all of the child routes and renders the first one that matches the current url
   ```javascript
-    function Main() { 
-      return ( 
-        <main> 
-          <Switch> 
-            <Route exact path='/' component={Home}/> 
-            <Route path='/roster' component={Roster}/> 
-            <Route path='/schedule' component={Schedule}/> 
-          </Switch> 
-        </main>); 
+    function Main() {
+      return (
+        <main>
+          <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route path='/roster' component={Roster}/>
+            <Route path='/schedule' component={Schedule}/>
+          </Switch>
+        </main>);
       }
   ```
 - Link element
   - element changes the url and renders the correct component without re-loading the page. think routerLink :)
   ```javascript
-  function Header() { 
-    return ( 
-      <header> 
-        <nav> 
-          <ul> 
-            <li><Link to='/'>Home</Link></li> 
-            <li><Link to='/roster'>Roster</Link></li> 
-            <li><Link to='/schedule'>Schedule</Link></li> 
-          </ul> 
-        </nav> 
-      </header>); 
+  function Header() {
+    return (
+      <header>
+        <nav>
+          <ul>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/roster'>Roster</Link></li>
+            <li><Link to='/schedule'>Schedule</Link></li>
+          </ul>
+        </nav>
+      </header>);
     }
-  ``` 
+  ```
 
 # Redux and react-redux
 
@@ -575,7 +575,47 @@ axios
 
 ## What's new in ES2019
 
+### Array.Flat()
+    * The flat() method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
+### Array.flatMap()
+    * The flatMap() method first maps each element using a mapping function, then flattens the result into a new array. It is identical to a map followed by a flat of depth 1, but flatMap is often quite useful, as merging both into one method is slightly more efficient.
+### Object.fromEntries()
+    * The Object.fromEntries() method transforms a list of key-value pairs into an object.
+### String.trimStart() & String.trimEnd()
+    * The trimStart() method removes whitespace from the beginning of a string.
+    * The trimEnd() method removes whitespace from the end of a string.
+### Optional Catch Binding
+    * Allow developers to use try/catch without creating an unused binding.
+      You are free to go ahead make use of catch block without a param
+### Function.toString()
+    * The toString() method returns a string representing the source code of the function.Earlier white spaces,new lines and comments will be removed when you do now they are retained with original source code
+### Symbol.description
+    * The read-only description property is a string returning the optional description of Symbol objects.
+### Well Formed JSON.Stringify()
+    * To prevent JSON.stringify from returning ill-formed Unicode strings.
+### Array.Sort Stability
+    * Users with same rating retain their sorting order
+
 ## What's a generator?
+
+Generators are functions which can be exited and later re-entered. Their context (variable bindings) will be saved across re-entrances.
+
+Generators in JavaScript -- especially when combined with Promises -- are a very powerful tool for asynchronous programming as they mitigate -- if not entirely eliminate -- the problems with callbacks, such as Callback Hell and Inversion of Control.
+
+```javascript
+function* generator(i) {
+  yield i;
+  yield i + 10;
+}
+
+var gen = generator(10);
+
+console.log(gen.next().value);
+// expected output: 10
+
+console.log(gen.next().value);
+// expected output: 20
+```
 
 # Intimate knowledge of Bootstrap and react-bootstrap even if there are parts of it we hate
 
@@ -596,7 +636,7 @@ axios
 # A solid understanding of Docker and how to deploy your app to a Docker Registry and maintain a deployment script
 
 Docker uses containerization which is similar to virtualization (like a vm). The difference is you do not need to complete environment to run like the OS.  
-Containers include the application and all of its dependencies --but share the kernel with other containers, running as isolated processes in user space on 
+Containers include the application and all of its dependencies --but share the kernel with other containers, running as isolated processes in user space on
 the host operating system. Docker containers are not tied to any specific infrastructure: they run on any computer, on any infrastructure, and in any cloud.
 
 ## deploy your app to a Docker Registry
